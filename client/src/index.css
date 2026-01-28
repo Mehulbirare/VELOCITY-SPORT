@@ -1,0 +1,418 @@
+/* Custom utilities for VELOCITY SHOP */
+
+.m-t-auto {
+  margin-top: auto;
+}
+
+.p-t-60 {
+  padding-top: 60px;
+}
+
+.p-b-60 {
+  padding-bottom: 60px;
+}
+
+.p-t-40 {
+  padding-top: 40px;
+}
+
+.p-b-40 {
+  padding-bottom: 40px;
+}
+
+.m-b-40 {
+  margin-bottom: 40px;
+}
+
+.shadow-lg {
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+}
+
+.rounded {
+  border-radius: .25rem !important;
+}
+
+.bg-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Make sure the main content is at least the height of the screen */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-wrapper {
+  flex: 1;
+}
+
+/* Smooth transitions */
+.btn,
+.food-item-wrap,
+.nav-link {
+  transition: all 0.3s ease;
+}
+
+.food-item-wrap:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* White text helper */
+.white-txt,
+.font-white {
+  color: #fff !important;
+}
+
+/* Ensure background overlays and dark sections */
+.hero:before,
+.inner-page-hero:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  /* Dark overlay */
+  z-index: 1;
+}
+
+.hero-inner,
+.profile {
+  position: relative;
+  z-index: 2;
+}
+
+/* Floating Glass Navbar Redesign */
+#header {
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 30px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+#header.navbar-shadow {
+  padding: 15px 0;
+}
+
+#header .navbar {
+  background: rgba(255, 255, 255, 0.03) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  /* Pillow shape */
+  padding: 12px 30px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+#header.navbar-shadow .navbar {
+  background: rgba(10, 10, 10, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.navbar-brand {
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 8px 15px !important;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+  right: 15px;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link:hover {
+  color: #fff !important;
+}
+
+.tag-danger,
+.badge-danger {
+  background: var(--primary) !important;
+  box-shadow: 0 0 10px rgba(255, 51, 0, 0.5);
+}
+
+/* Featured Item Card */
+.item-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.item-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(255, 51, 0, 0.3) !important;
+  background: #0d0d0d !important;
+}
+
+.item-card:hover .btn {
+  box-shadow: 0 5px 15px rgba(255, 51, 0, 0.4);
+}
+
+/* Typography refinements */
+h1,
+h2,
+h3,
+h4,
+.navbar-brand {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+.opacity-5 {
+  opacity: 0.5;
+}
+
+.opacity-6 {
+  opacity: 0.6;
+}
+
+.opacity-4 {
+  opacity: 0.4;
+}
+
+.opacity-3 {
+  opacity: 0.3;
+}
+
+.opacity-2 {
+  opacity: 0.2;
+}
+
+.hover-opacity-100:hover {
+  opacity: 1 !important;
+  transition: opacity 0.3s;
+}
+
+/* Global Red Accent Button */
+.theme-btn {
+  background: #ff3300 !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  transition: all 0.3s ease !important;
+}
+
+.theme-btn:hover {
+  background: #cc2900 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(255, 51, 0, 0.3);
+}
+
+/* Fix for standard Bootstrap row spacing */
+.gap-4 {
+  gap: 1.5rem;
+}
+
+/* Ensure body doesn't overlap the floating nav too abruptly */
+.home-page .hero {
+  padding-top: 150px;
+}
+
+footer {
+  background-color: #1a1a1a !important;
+  /* Near black */
+  background-image: none !important;
+  color: #adb5bd;
+}
+
+footer a {
+  color: #ced4da;
+}
+
+footer h5 {
+  color: #fff !important;
+}
+
+.footer-logo-block a {
+  color: #fff !important;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+/* Ensure inner page heroes have a height and background if not defined inline */
+html,
+body {
+  background-color: #050505;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+:root {
+  --primary: #ff3300;
+  --primary-dark: #cc2900;
+  --dark: #121212;
+  --light: #f8f9fa;
+  --glass: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 15px;
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #ff3300, #ff8533);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 60px 0;
+  }
+}
+
+.hero-text h1 {
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+  height: 400px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.category-card img {
+  transition: transform 0.8s ease;
+}
+
+.category-card:hover img {
+  transform: scale(1.1);
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Ensure white links are visible in dark sections */
+.dark-section a,
+.hero a,
+.inner-page-hero a,
+footer a {
+  color: #fff !important;
+}
+
+.dark-section a:hover,
+.hero a:hover,
+.inner-page-hero a:hover,
+footer a:hover {
+  color: #f30 !important;
+}
+
+/* Visibility for tags and badges */
+.tag-danger,
+.badge-danger {
+  background-color: #f30 !important;
+  color: #fff !important;
+}
+
+/* Fix for legacy backgrounds - forcing Dark Theme consistency */
+.bg-gray {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+.restaurant-entry {
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  margin-bottom: 30px;
+}
+
+.widget-heading {
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+}
+
+.widget-title {
+  color: #fff !important;
+  font-weight: 800;
+  margin: 0;
+}
+
+.widget-body {
+  padding: 30px;
+}
+
+/* Custom Checkbox/Radio for Dark Theme */
+.custom-control-description {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.primary-color {
+  color: #ff3300 !important;
+}

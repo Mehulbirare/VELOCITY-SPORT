@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "username": "admin",
+        "password": "$2a$10$Xm7M/V/zQ5xQz5y/uP7TneXyvYmFq5H6v8qR7R8R8R8R8R8R8R8R8",
+        "email": "admin@sportshop.com",
+        "role": "admin"
+    }
+]

@@ -1,0 +1,142 @@
+[
+    {
+        "id": 1,
+        "name": "Nike Mercurial Elite",
+        "description": "Professional football boots for maximum speed and control.",
+        "price": 18500,
+        "category": "Footwear",
+        "sport": "Football",
+        "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+        "stock": 15
+    },
+    {
+        "id": 2,
+        "name": "Wilson NBA Official",
+        "description": "The official basketball of the NBA, crafted for performance.",
+        "price": 12500,
+        "category": "Equipment",
+        "sport": "Basketball",
+        "image": "https://images.unsplash.com/photo-1519861531158-228527a43f53",
+        "stock": 10
+    },
+    {
+        "id": 3,
+        "name": "Babolat Pure Drive 2024",
+        "description": "High performance tennis racket for power and spin.",
+        "price": 16500,
+        "category": "Equipment",
+        "sport": "Tennis",
+        "image": "https://images.unsplash.com/photo-1617083281297-af320c142f05",
+        "stock": 8
+    },
+    {
+        "id": 4,
+        "name": "Adidas Argentina Jersey",
+        "description": "Authentic Argentina national team home jersey 2024.",
+        "price": 4500,
+        "category": "Apparel",
+        "sport": "Football",
+        "image": "https://images.unsplash.com/photo-1521412644186-857ad8797f26",
+        "stock": 25
+    },
+    {
+        "id": 5,
+        "name": "Everlast Elite Gloves",
+        "description": "Professional grade boxing gloves for sparring.",
+        "price": 5500,
+        "category": "Equipment",
+        "sport": "Boxing",
+        "image": "https://images.unsplash.com/photo-1509563268479-0f004cf3f58b",
+        "stock": 20
+    },
+    {
+        "id": 6,
+        "name": "Garmin Forerunner 955",
+        "description": "GPS running watch with solar charging.",
+        "price": 35000,
+        "category": "Accessories",
+        "sport": "Running",
+        "image": "https://images.unsplash.com/photo-1517594422361-5eeb8ae275a9",
+        "stock": 12
+    },
+    {
+        "id": 7,
+        "name": "Spalding TF-1000",
+        "description": "Premium indoor basketball for professional play.",
+        "price": 6500,
+        "category": "Equipment",
+        "sport": "Basketball",
+        "image": "https://images.unsplash.com/photo-1546519638-68e109498ffc",
+        "stock": 15
+    },
+    {
+        "id": 8,
+        "name": "Titleist Pro V1",
+        "description": "The world's #1 golf ball for consistency.",
+        "price": 4200,
+        "category": "Equipment",
+        "sport": "Golf",
+        "image": "https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa",
+        "stock": 50
+    },
+    {
+        "id": 9,
+        "name": "Carbon-X Pro Guards",
+        "description": "Ultra-light carbon fiber shin guards for maximum protection.",
+        "price": 8500,
+        "category": "Equipment",
+        "sport": "Football",
+        "image": "https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?q=80&w=2070&auto=format&fit=crop",
+        "stock": 30
+    },
+    {
+        "id": 10,
+        "name": "Kookaburra Ghost Bat",
+        "description": "Hand-crafted Grade 1 English Willow for professional power.",
+        "price": 42000,
+        "category": "Equipment",
+        "sport": "Cricket",
+        "image": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?q=80&w=2067&auto=format&fit=crop",
+        "stock": 5
+    },
+    {
+        "id": 11,
+        "name": "VaporFly Next% 3",
+        "description": "Revolutionary racing shoes designed for breaking records.",
+        "price": 24500,
+        "category": "Footwear",
+        "sport": "Running",
+        "image": "https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=2071&auto=format&fit=crop",
+        "stock": 10
+    },
+    {
+        "id": 12,
+        "name": "Elite Training Jersey",
+        "description": "Moisture-wicking breathable fabric for high-intensity sessions.",
+        "price": 3200,
+        "category": "Apparel",
+        "sport": "Gym",
+        "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2070&auto=format&fit=crop",
+        "stock": 40
+    },
+    {
+        "id": 13,
+        "name": "Leather Pro Gym Duffle",
+        "description": "Premium full-grain leather bag with ventilated shoe compartment.",
+        "price": 12000,
+        "category": "Accessories",
+        "sport": "Gym",
+        "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=1974&auto=format&fit=crop",
+        "stock": 12
+    },
+    {
+        "id": 14,
+        "name": "Fastskin LZR Suit",
+        "description": "Olympic-grade compression swimwear for minimal drag.",
+        "price": 28000,
+        "category": "Apparel",
+        "sport": "Swimming",
+        "image": "https://images.unsplash.com/photo-1530549387631-6bc151747539?q=80&w=2070&auto=format&fit=crop",
+        "stock": 8
+    }
+]
