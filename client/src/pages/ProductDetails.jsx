@@ -3,7 +3,9 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import { motion, AnimatePresence } from 'framer-motion';
+
 import { ChevronLeft, ShoppingCart, ShieldCheck, Zap, Award, Share2, Heart, Info } from 'lucide-react';
+import LiveTicker from '../components/LiveTicker';
 
 const ProductDetails = () => {
     const { id } = useParams();
@@ -151,6 +153,8 @@ const ProductDetails = () => {
                                 <span style={{ color: '#ff3300', fontWeight: '800', fontSize: '0.8rem', letterSpacing: '3px' }}>ELITE SERIES</span>
                             </div>
                             <h1 style={{ fontSize: '3.5rem', fontWeight: '900', lineHeight: '1', letterSpacing: '-2px', marginBottom: '20px' }}>{product.name.toUpperCase()}</h1>
+
+                            <LiveTicker />
 
                             <div className="d-flex align-items-center m-b-30 gap-4">
                                 <div className="white-txt h2" style={{ fontWeight: '900', margin: 0 }}>₹{product.price.toLocaleString()}</div>

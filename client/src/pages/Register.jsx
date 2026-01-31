@@ -122,7 +122,7 @@ const Register = () => {
                 </Link>
             </div>
 
-            <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '120px', paddingBottom: '100px' }}>
+            <div className="container" style={{ position: 'relative', zIndex: 1, paddingTop: '180px', paddingBottom: '100px' }}>
                 <div className="row">
                     <div className="col-lg-5">
                         <motion.div

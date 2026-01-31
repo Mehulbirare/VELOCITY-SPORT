@@ -50,11 +50,11 @@ const Footer = () => {
                             </li>
                             <li className="m-b-15" style={{ display: 'flex', gap: '10px' }}>
                                 <Phone size={18} className="primary-color" />
-                                <span>+1 (555) SPORTS-GO</span>
+                                <span>+91 6374920993</span>
                             </li>
                             <li className="m-b-15" style={{ display: 'flex', gap: '10px' }}>
                                 <Mail size={18} className="primary-color" />
-                                <span>contact@velocityshop.com</span>
+                                <span>mehulbirare6810@gmail.com</span>
                             </li>
                         </ul>
                     </div>

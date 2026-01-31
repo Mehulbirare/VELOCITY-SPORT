@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from '../context/CartContext';
-import { motion } from 'framer-motion';
-import { ShieldCheck, Truck, Zap, ArrowRight, Play } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ShieldCheck, Truck, Zap, ArrowRight, Play, X } from 'lucide-react';
 
 const Home = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
+    const [showVideo, setShowVideo] = useState(false);
     const { addToCart } = useCart();
 
     useEffect(() => {
@@ -96,7 +97,7 @@ const Home = () => {
                                         Shop The Collection <ArrowRight size={20} className="m-l-10" />
                                     </Link>
 
-                                    <button className="btn btn-link white-txt m-l-20 d-flex align-items-center" style={{ fontWeight: '600' }}>
+                                    <button onClick={() => setShowVideo(true)} className="btn btn-link white-txt m-l-20 d-flex align-items-center" style={{ fontWeight: '600' }}>
                                         <div style={{ width: '50px', height: '50px', borderRadius: '50%', border: '1px solid rgba(255,255,255,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px' }}>
                                             <Play size={18} fill="white" />
                                         </div>
@@ -190,12 +191,12 @@ const Home = () => {
                                         <Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
                                             <h4 className="white-txt m-b-15" style={{ fontWeight: '800' }}>{product.name}</h4>
                                         </Link>
-                                        <div className="d-flex align-items-center justify-content-between">
-                                            <span style={{ fontSize: '1.5rem', fontWeight: '800', color: '#fff' }}>₹{product.price}</span>
+                                        <div className="d-flex align-items-center justify-content-between" style={{ gap: '20px' }}>
+                                            <span style={{ fontSize: '1.5rem', fontWeight: '800', color: '#fff', whiteSpace: 'nowrap', marginRight: '15px' }}>₹{product.price}</span>
                                             <button
                                                 onClick={() => addToCart(product)}
-                                                className="btn theme-btn"
-                                                style={{ borderRadius: '0', padding: '10px 20px' }}
+                                                className="btn theme-btn d-flex align-items-center justify-content-center"
+                                                style={{ borderRadius: '0', padding: '10px 20px', whiteSpace: 'nowrap' }}
                                             >
                                                 ADD TO BAG
                                             </button>
@@ -233,6 +234,77 @@ const Home = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Video Modal */}
+            <AnimatePresence>
+                {showVideo && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        style={{
+                            position: 'fixed',
+                            top: 0,
+                            left: 0,
+                            width: '100%',
+                            height: '100%',
+                            background: 'rgba(0,0,0,0.95)',
+                            zIndex: 9999,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            padding: '20px'
+                        }}
+                        onClick={() => setShowVideo(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.8, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.8, opacity: 0 }}
+                            style={{
+                                width: '100%',
+                                maxWidth: '1000px',
+                                aspectRatio: '16/9',
+                                position: 'relative',
+                                boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                                background: '#000'
+                            }}
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <button
+                                onClick={() => setShowVideo(false)}
+                                style={{
+                                    position: 'absolute',
+                                    top: '-60px',
+                                    right: '0',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '10px',
+                                    background: 'none',
+                                    border: 'none',
+                                    color: 'white',
+                                    cursor: 'pointer',
+                                    fontSize: '0.9rem',
+                                    fontWeight: '600',
+                                    letterSpacing: '1px'
+                                }}
+                            >
+                                CLOSE <div style={{ background: 'rgba(255,255,255,0.1)', padding: '8px', borderRadius: '50%' }}><X size={20} /></div>
+                            </button>
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src="https://www.youtube.com/embed/N9q5e0U6fRE?autoplay=1&mute=0"
+                                title="Velocity Intro"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                style={{ display: 'block' }}
+                            ></iframe>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 };

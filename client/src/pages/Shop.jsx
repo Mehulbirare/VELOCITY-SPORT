@@ -3,7 +3,9 @@ import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+
 import { Filter, ShoppingBag, Trash2, ChevronRight, Search } from 'lucide-react';
+import LiveTicker from '../components/LiveTicker';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -213,6 +215,7 @@ const Shop = () => {
                                             }}>
                                                 <Link to={`/product/${product.id}`} style={{ textDecoration: 'none' }}>
                                                     <div className="product-img-wrap m-b-20" style={{ height: '280px', overflow: 'hidden', position: 'relative', borderRadius: '15px' }}>
+                                                        <LiveTicker compact={true} />
                                                         <img src={product.image} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                                                         <div className="category-tag" style={{ position: 'absolute', top: '12px', left: '12px', background: 'rgba(0,0,0,0.8)', padding: '5px 15px', fontSize: '0.7rem', fontWeight: '800', borderRadius: '50px', color: '#ff3300', letterSpacing: '1px' }}>
                                                             {product.sport.toUpperCase()}
@@ -224,13 +227,13 @@ const Shop = () => {
                                                         <h5 className="white-txt m-b-10" style={{ fontWeight: '800', fontSize: '1.2rem', lineHeight: '1.2' }}>{product.name}</h5>
                                                     </Link>
                                                     <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem', lineHeight: '1.5' }}>{product.description}</p>
-                                                    <div className="m-t-auto d-flex align-items-center justify-content-between p-t-20" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-                                                        <span className="white-txt h5 m-b-0" style={{ fontWeight: '900', fontSize: '1.4rem' }}>₹{product.price}</span>
+                                                    <div className="m-t-auto d-flex align-items-center justify-content-between p-t-20" style={{ borderTop: '1px solid rgba(255,255,255,0.06)', gap: '20px' }}>
+                                                        <span className="white-txt h5 m-b-0" style={{ fontWeight: '900', fontSize: '1.4rem', whiteSpace: 'nowrap', marginRight: '15px' }}>₹{product.price}</span>
                                                         <motion.button
                                                             whileTap={{ scale: 0.9 }}
                                                             onClick={() => addToCart(product)}
-                                                            className="btn theme-btn"
-                                                            style={{ padding: '10px 22px', borderRadius: '12px', fontSize: '0.85rem', fontWeight: '800' }}
+                                                            className="btn theme-btn d-flex align-items-center justify-content-center"
+                                                            style={{ padding: '10px 22px', borderRadius: '12px', fontSize: '0.85rem', fontWeight: '800', whiteSpace: 'nowrap' }}
                                                         >
                                                             ADD TO BAG
                                                         </motion.button>
