@@ -46,6 +46,24 @@ const Shop = () => {
         setFilteredProducts(result);
     }, [activeCategory, searchQuery, products]);
 
+    const [showFilters, setShowFilters] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth < 992) {
+                setIsMobile(true);
+                setShowFilters(false);
+            } else {
+                setIsMobile(false);
+                setShowFilters(true);
+            }
+        };
+        handleResize(); // Initial check
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className="shop-page" style={{ background: '#050505', minHeight: '100vh', paddingTop: '100px' }}>
             {/* Minimal Shop Header */}
@@ -88,94 +106,118 @@ const Shop = () => {
                 <div className="row">
                     {/* Dark Sidebar Filters */}
                     <div className="col-lg-3 col-md-4">
-                        <div className="sticky-top" style={{ top: '120px', zIndex: 10 }}>
-                            <div className="filter-section m-b-40">
-                                <h5 className="white-txt m-b-20 d-flex align-items-center" style={{ fontWeight: '800', letterSpacing: '1px' }}>
-                                    <Filter size={18} className="m-r-10 primary-color" /> CATEGORIES
-                                </h5>
-                                <div className="category-list">
-                                    {categories.map(cat => (
-                                        <motion.div
-                                            key={cat}
-                                            whileHover={{ x: 5 }}
-                                            onClick={() => setActiveCategory(cat)}
-                                            style={{
-                                                cursor: 'pointer',
-                                                padding: '12px 0',
-                                                borderBottom: '1px solid rgba(255,255,255,0.05)',
-                                                color: activeCategory === cat ? '#ff3300' : 'rgba(255,255,255,0.6)',
-                                                fontWeight: activeCategory === cat ? '700' : '400',
-                                                display: 'flex',
-                                                alignItems: 'center',
-                                                justifyContent: 'space-between',
-                                                transition: 'color 0.3s'
-                                            }}
-                                        >
-                                            {cat}
-                                            {activeCategory === cat && <ChevronRight size={16} />}
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </div>
-
-                            {/* Floating Sidebar Cart */}
-                            <motion.div
-                                className="cart-widget shadow-lg"
-                                style={{
-                                    background: 'rgba(255,255,255,0.03)',
-                                    border: '1px solid rgba(255,255,255,0.1)',
-                                    borderRadius: '24px',
-                                    backdropFilter: 'blur(20px)',
-                                    padding: '25px'
-                                }}
+                        {isMobile && (
+                            <button
+                                onClick={() => setShowFilters(!showFilters)}
+                                className="btn btn-block theme-btn m-b-20 d-flex align-items-center justify-content-center w-100"
+                                style={{ borderRadius: '50px', padding: '12px', fontWeight: 'bold' }}
                             >
-                                <h5 className="white-txt m-b-25 d-flex align-items-center" style={{ fontWeight: '800' }}>
-                                    <ShoppingBag size={20} className="m-r-12" style={{ color: '#ff3300' }} /> YOUR BAG
-                                </h5>
-                                <div className="cart-items-mini m-b-25" style={{ maxHeight: '350px', overflowY: 'auto' }}>
-                                    {cart.length === 0 ? (
-                                        <div className="text-center p-20">
-                                            <p className="opacity-4" style={{ color: 'white', fontSize: '0.9rem' }}>Empty</p>
-                                        </div>
-                                    ) : (
-                                        cart.map(item => (
-                                            <div key={item.id} className="d-flex align-items-center m-b-20 p-b-10" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                                                <div style={{ width: '50px', height: '50px', background: '#111', borderRadius: '12px', overflow: 'hidden', marginRight: '15px', flexShrink: 0 }}>
-                                                    <img src={item.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                                                </div>
-                                                <div style={{ flex: 1, minWidth: 0 }}>
-                                                    <div className="white-txt text-truncate" style={{ fontSize: '0.9rem', fontWeight: '700', marginBottom: '2px' }}>{item.name}</div>
-                                                    <div className="opacity-6" style={{ fontSize: '0.8rem', color: '#aaa' }}>₹{item.price} × {item.quantity}</div>
-                                                </div>
-                                                <button
-                                                    onClick={() => removeFromCart(item.id)}
-                                                    style={{ background: 'none', border: 'none', color: '#ff3300', padding: '5px', cursor: 'pointer' }}
+                                <Filter size={18} className="m-r-10" /> {showFilters ? 'Hide Filters' : 'Show Filters'}
+                            </button>
+                        )}
+
+                        <AnimatePresence>
+                            {showFilters && (
+                                <motion.div
+                                    initial={isMobile ? { height: 0, opacity: 0 } : { opacity: 1 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={isMobile ? { height: 0, opacity: 0 } : undefined}
+                                    transition={{ duration: 0.3 }}
+                                    className={!isMobile ? "sticky-top" : ""}
+                                    style={{ top: '120px', zIndex: 10, overflow: 'hidden' }}
+                                >
+                                    <div className="filter-section m-b-40">
+                                        <h5 className="white-txt m-b-20 d-flex align-items-center" style={{ fontWeight: '800', letterSpacing: '1px' }}>
+                                            <Filter size={18} className="m-r-10 primary-color" /> CATEGORIES
+                                        </h5>
+                                        <div className="category-list">
+                                            {categories.map(cat => (
+                                                <motion.div
+                                                    key={cat}
+                                                    whileHover={{ x: 5 }}
+                                                    onClick={() => setActiveCategory(cat)}
+                                                    style={{
+                                                        cursor: 'pointer',
+                                                        padding: '12px 0',
+                                                        borderBottom: '1px solid rgba(255,255,255,0.05)',
+                                                        color: activeCategory === cat ? '#ff3300' : 'rgba(255,255,255,0.6)',
+                                                        fontWeight: activeCategory === cat ? '700' : '400',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'space-between',
+                                                        transition: 'color 0.3s'
+                                                    }}
                                                 >
-                                                    <Trash2 size={18} />
-                                                </button>
-                                            </div>
-                                        ))
-                                    )}
-                                </div>
-                                {cart.length > 0 && (
-                                    <div className="cart-summary">
-                                        <div className="d-flex justify-content-between align-items-end m-b-20">
-                                            <span className="white-txt opacity-6" style={{ fontSize: '0.85rem' }}>Total</span>
-                                            <span className="white-txt" style={{ fontSize: '1.4rem', fontWeight: '900' }}>₹{cartTotal.toFixed(2)}</span>
+                                                    {cat}
+                                                    {activeCategory === cat && <ChevronRight size={16} />}
+                                                </motion.div>
+                                            ))}
                                         </div>
-                                        <Link to="/checkout" className="btn theme-btn btn-block" style={{
-                                            borderRadius: '50px',
-                                            padding: '16px',
-                                            fontWeight: '800',
-                                            fontSize: '1rem',
-                                            letterSpacing: '1px'
-                                        }}>
-                                            CHECKOUT
-                                        </Link>
                                     </div>
-                                )}
-                            </motion.div>
-                        </div>
+
+                                    {/* Floating Sidebar Cart */}
+                                    <motion.div
+                                        className="cart-widget shadow-lg"
+                                        style={{
+                                            background: 'rgba(255,255,255,0.03)',
+                                            border: '1px solid rgba(255,255,255,0.1)',
+                                            borderRadius: '24px',
+                                            backdropFilter: 'blur(20px)',
+                                            padding: '25px',
+                                            marginBottom: isMobile ? '30px' : '0'
+                                        }}
+                                    >
+                                        <h5 className="white-txt m-b-25 d-flex align-items-center" style={{ fontWeight: '800' }}>
+                                            <ShoppingBag size={20} className="m-r-12" style={{ color: '#ff3300' }} /> YOUR BAG
+                                        </h5>
+                                        <div className="cart-items-mini m-b-25" style={{ maxHeight: '350px', overflowY: 'auto' }}>
+                                            {cart.length === 0 ? (
+                                                <div className="text-center p-20">
+                                                    <p className="opacity-4" style={{ color: 'white', fontSize: '0.9rem' }}>Empty</p>
+                                                </div>
+                                            ) : (
+                                                cart.map(item => (
+                                                    <div key={item.id} className="d-flex align-items-center m-b-20 p-b-10" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+                                                        <div style={{ width: '50px', height: '50px', background: '#111', borderRadius: '12px', overflow: 'hidden', marginRight: '15px', flexShrink: 0 }}>
+                                                            <img src={item.image} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                                                        </div>
+                                                        <div style={{ flex: 1, minWidth: 0 }}>
+                                                            <div className="white-txt text-truncate" style={{ fontSize: '0.9rem', fontWeight: '700', marginBottom: '2px' }}>{item.name}</div>
+                                                            <div className="opacity-6" style={{ fontSize: '0.8rem', color: '#aaa' }}>₹{item.price} × {item.quantity}</div>
+                                                        </div>
+                                                        <button
+                                                            onClick={() => removeFromCart(item.id)}
+                                                            style={{ background: 'none', border: 'none', color: '#ff3300', padding: '5px', cursor: 'pointer' }}
+                                                        >
+                                                            <Trash2 size={18} />
+                                                        </button>
+                                                    </div>
+                                                ))
+                                            )}
+                                        </div>
+                                        {cart.length > 0 && (
+                                            <div className="cart-summary">
+                                                <div className="d-flex justify-content-between align-items-end m-b-20">
+                                                    <span className="white-txt opacity-6" style={{ fontSize: '0.85rem' }}>Total</span>
+                                                    <span className="white-txt" style={{ fontSize: '1.4rem', fontWeight: '900' }}>₹{cartTotal.toFixed(2)}</span>
+                                                </div>
+                                                <Link to="/checkout" className="btn theme-btn btn-block w-100" style={{
+                                                    borderRadius: '50px',
+                                                    padding: '16px',
+                                                    fontWeight: '800',
+                                                    fontSize: '1rem',
+                                                    letterSpacing: '1px',
+                                                    display: 'block',
+                                                    textAlign: 'center'
+                                                }}>
+                                                    CHECKOUT
+                                                </Link>
+                                            </div>
+                                        )}
+                                    </motion.div>
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
 
                     {/* Products Grid */}

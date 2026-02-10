@@ -81,7 +81,14 @@ const Home = () => {
                                     <span style={{ color: '#ff3300' }}>LIMITS.</span>
                                 </h1>
 
-                                <p className="font-white m-b-40" style={{ fontSize: '1.25rem', opacity: '0.7', maxWidth: '550px', lineHeight: '1.6' }}>
+                                <p className="font-white m-b-40" style={{
+                                    fontSize: '1.25rem',
+                                    opacity: '0.9',
+                                    maxWidth: '600px',
+                                    lineHeight: '1.6',
+                                    fontWeight: '400',
+                                    textShadow: '0 2px 10px rgba(0,0,0,0.5)'
+                                }}>
                                     Engineered for elite athletes. Our 2024 collection combines revolutionary aerodynamics with unmatched comfort.
                                 </p>
 

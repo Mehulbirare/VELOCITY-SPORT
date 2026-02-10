@@ -111,34 +111,6 @@ const ProductDetails = () => {
                                 <Heart size={24} color={isLiked ? '#ff3300' : '#fff'} fill={isLiked ? '#ff3300' : 'none'} />
                             </button>
                         </motion.div>
-
-                        {/* Technical Specifications */}
-                        <div className="m-t-40 p-40" style={{ background: 'rgba(255,255,255,0.02)', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                            <h4 className="m-b-30" style={{ fontWeight: '800', letterSpacing: '1px' }}>TECHNICAL OVERVIEW</h4>
-                            <div className="row">
-                                <div className="col-md-6 m-b-20">
-                                    <div className="d-flex align-items-center m-b-10">
-                                        <Zap size={18} color="#ff3300" className="m-r-10" />
-                                        <span className="opacity-5" style={{ fontSize: '0.8rem', fontWeight: '700' }}>PERFORMANCE</span>
-                                    </div>
-                                    <div style={{ background: 'rgba(255,255,255,0.05)', height: '4px', borderRadius: '10px' }}>
-                                        <motion.div initial={{ width: 0 }} animate={{ width: '92%' }} transition={{ duration: 1, delay: 0.5 }} style={{ background: '#ff3300', height: '100%', borderRadius: '10px' }}></motion.div>
-                                    </div>
-                                </div>
-                                <div className="col-md-6 m-b-20">
-                                    <div className="d-flex align-items-center m-b-10">
-                                        <Award size={18} color="#ff3300" className="m-r-10" />
-                                        <span className="opacity-5" style={{ fontSize: '0.8rem', fontWeight: '700' }}>DURABILITY</span>
-                                    </div>
-                                    <div style={{ background: 'rgba(255,255,255,0.05)', height: '4px', borderRadius: '10px' }}>
-                                        <motion.div initial={{ width: 0 }} animate={{ width: '88%' }} transition={{ duration: 1, delay: 0.7 }} style={{ background: '#ff3300', height: '100%', borderRadius: '10px' }}></motion.div>
-                                    </div>
-                                </div>
-                            </div>
-                            <p className="m-t-20 opacity-6" style={{ lineHeight: '1.8' }}>
-                                Engineered for the modern athlete, this specimen integrates cutting-edge materials and precision design to provide an unparalleled competitive advantage.
-                            </p>
-                        </div>
                     </div>
 
                     {/* Right: Product Info */}
@@ -215,6 +187,38 @@ const ProductDetails = () => {
                                 </div>
                             </div>
                         </motion.div>
+                    </div>
+                </div>
+
+                {/* Technical Specifications - Moved below for better responsive flow */}
+                <div className="row m-t-40">
+                    <div className="col-lg-8 offset-lg-2">
+                        <div className="p-40" style={{ background: 'rgba(255,255,255,0.02)', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                            <h4 className="m-b-30" style={{ fontWeight: '800', letterSpacing: '1px' }}>TECHNICAL OVERVIEW</h4>
+                            <div className="row">
+                                <div className="col-md-6 m-b-20">
+                                    <div className="d-flex align-items-center m-b-10">
+                                        <Zap size={18} color="#ff3300" className="m-r-10" />
+                                        <span className="opacity-5" style={{ fontSize: '0.8rem', fontWeight: '700' }}>PERFORMANCE</span>
+                                    </div>
+                                    <div style={{ background: 'rgba(255,255,255,0.05)', height: '4px', borderRadius: '10px' }}>
+                                        <motion.div initial={{ width: 0 }} animate={{ width: '92%' }} transition={{ duration: 1, delay: 0.5 }} style={{ background: '#ff3300', height: '100%', borderRadius: '10px' }}></motion.div>
+                                    </div>
+                                </div>
+                                <div className="col-md-6 m-b-20">
+                                    <div className="d-flex align-items-center m-b-10">
+                                        <Award size={18} color="#ff3300" className="m-r-10" />
+                                        <span className="opacity-5" style={{ fontSize: '0.8rem', fontWeight: '700' }}>DURABILITY</span>
+                                    </div>
+                                    <div style={{ background: 'rgba(255,255,255,0.05)', height: '4px', borderRadius: '10px' }}>
+                                        <motion.div initial={{ width: 0 }} animate={{ width: '88%' }} transition={{ duration: 1, delay: 0.7 }} style={{ background: '#ff3300', height: '100%', borderRadius: '10px' }}></motion.div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p className="m-t-20 opacity-6" style={{ lineHeight: '1.8' }}>
+                                Engineered for the modern athlete, this specimen integrates cutting-edge materials and precision design to provide an unparalleled competitive advantage.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

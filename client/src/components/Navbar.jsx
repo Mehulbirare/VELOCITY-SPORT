@@ -32,15 +32,14 @@ const Navbar = () => {
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    border: 'none' /* Override any bootstrap border */
+                    flexWrap: 'nowrap',
+                    border: 'none'
                 }}>
-                    {/* Brand */}
                     <Link className="navbar-brand" to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
                         <span style={{ color: '#fff' }}>VELOCITY</span>
                         <span className="primary-color" style={{ marginLeft: '8px' }}>SHOP</span>
                     </Link>
 
-                    {/* Desktop Menu */}
                     <div className="desktop-menu" style={{ display: 'flex', alignItems: 'center' }}>
                         <ul style={{ display: 'flex', listStyle: 'none', margin: 0, padding: 0, alignItems: 'center' }}>
                             <li className="nav-item"> <Link className="nav-link" to="/">Home</Link> </li>
@@ -93,7 +92,6 @@ const Navbar = () => {
                         </ul>
                     </div>
 
-                    {/* Mobile Toggle Placeholder - if needed in future hidden by CSS toggle instead */}
                     <div className="mobile-toggle" style={{ display: 'none' }}>
                         <button onClick={() => setIsMenuOpen(!isMenuOpen)} style={{ background: 'none', border: 'none', color: '#fff' }}>
                             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
@@ -101,6 +99,68 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
+
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, x: '100%' }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: '100%' }}
+                        transition={{ type: 'tween', duration: 0.3 }}
+                        style={{
+                            position: 'fixed',
+                            top: 0,
+                            right: 0,
+                            width: '100%', /* Full width on mobile */
+                            maxWidth: '400px', /* Limit width on larger screens */
+                            height: '100vh',
+                            background: '#0a0a0a',
+                            zIndex: 9999, /* Ensure it's on top of everything */
+                            padding: '30px',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            boxShadow: '-10px 0 30px rgba(0,0,0,0.5)',
+                            overflowY: 'auto'
+                        }}
+                    >
+                        <div className="d-flex justify-content-between align-items-center m-b-40">
+                            <span className="navbar-brand">MENU</span>
+                            <button onClick={() => setIsMenuOpen(false)} style={{ background: 'none', border: 'none', color: '#fff' }}>
+                                <X size={32} />
+                            </button>
+                        </div>
+                        <ul style={{ listStyle: 'none', padding: 0 }}>
+                            <li className="m-b-20">
+                                <Link to="/" onClick={() => setIsMenuOpen(false)} style={{ fontSize: '1.5rem', color: '#fff', fontWeight: 'bold', textDecoration: 'none', display: 'block' }}>Home</Link>
+                            </li>
+                            <li className="m-b-20">
+                                <Link to="/shop" onClick={() => setIsMenuOpen(false)} style={{ fontSize: '1.5rem', color: '#fff', fontWeight: 'bold', textDecoration: 'none', display: 'block' }}>Shop</Link>
+                            </li>
+                            <li className="m-b-20">
+                                <Link to="/cart" onClick={() => setIsMenuOpen(false)} style={{ fontSize: '1.5rem', color: '#fff', fontWeight: 'bold', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                    Cart <ShoppingCart size={20} className="m-l-10" /> <span className="m-l-10 primary-color">({cart.length})</span>
+                                </Link>
+                            </li>
+                            {!user ? (
+                                <>
+                                    <li className="m-b-20"><Link to="/login" onClick={() => setIsMenuOpen(false)} style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>Login</Link> </li>
+                                    <li className="m-b-20"><Link to="/register" onClick={() => setIsMenuOpen(false)} style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>Signup</Link> </li>
+                                </>
+                            ) : (
+                                <>
+                                    {user.role === 'admin' && <li className="m-b-20"><Link to="/admin" onClick={() => setIsMenuOpen(false)} style={{ fontSize: '1.2rem', color: '#fff', textDecoration: 'none' }}>Admin Dashboard</Link> </li>}
+                                    <li className="m-b-20"><Link to="/orders" onClick={() => setIsMenuOpen(false)} style={{ fontSize: '1.2rem', color: '#fff', textDecoration: 'none' }}>My Orders</Link> </li>
+                                    <li className="m-b-20">
+                                        <button onClick={() => { handleLogout(); setIsMenuOpen(false); }} style={{ background: 'none', border: 'none', color: '#ff3300', fontSize: '1.2rem', fontWeight: 'bold', cursor: 'pointer', padding: 0 }}>
+                                            Logout
+                                        </button>
+                                    </li>
+                                </>
+                            )}
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </header>
     );
 };
